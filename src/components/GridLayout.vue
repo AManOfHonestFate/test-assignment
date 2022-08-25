@@ -16,5 +16,6 @@ export default {
   grid-template-columns: repeat(auto-fill, $grid-column-width);
   grid-template-rows: repeat(auto-fill, auto);
   grid-gap: $base-margin * 4;
+  flex-grow: 1;
 }
 </style>

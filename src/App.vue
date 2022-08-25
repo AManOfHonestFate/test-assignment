@@ -30,4 +30,9 @@ body {
 img {
   max-width: 100%;
 }
+
+button {
+  border: none;
+  background: none;
+}
 </style>

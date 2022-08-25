@@ -1,19 +1,26 @@
 // theme colors
 //
 // background colors
+$gray: #EEE;
+$green: #7BAE73;
+$pink: #FF8484;
+$light-blue: #6495EDFF;
+
 $background-colors: (
   "primary": #E5E5E5,
   "secondary": #FFFEFB,
-  "green": #7BAE73,
-  "pink": #FF8484,
-  "gray": #EEEEEE
+  "green": $green,
+  "pink": $pink,
+  "gray": $gray
 );
 
 // text colors
+$tertiary: #B4B4B4;
+
 $text-colors: (
   "primary": #3F3F3F,
   "secondary": #49485E,
-  "tertiary": #B4B4B4,
+  "tertiary": $tertiary,
   "white": white
 );
 
@@ -30,10 +37,12 @@ $font-size-xl: $base-font-size * 1.5;
 $font-size-xxl: $base-font-size * 1.75;
 
 // breakpoints
+$sm: 360px;
 $md: 768px;
 
 // border radius
 $base-border-radius: 4px;
+$big-border-radius: $base-border-radius * 1.5;
 
 // grid
 $grid-column-width: 332px;
@@ -41,3 +50,6 @@ $grid-column-width: 332px;
 // font weights
 $strong: 600;
 $regular: 400;
+
+// transitions
+$duration: 400ms;

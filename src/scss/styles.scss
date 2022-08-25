@@ -6,3 +6,9 @@
 
 // utilities
 @import "utilities";
+
+.card-shadow {
+  box-shadow:
+          0 6px 10px rgba(0, 0, 0, 0.02),
+          0 20px 36px rgba(0, 0, 0, 0.04);
+}

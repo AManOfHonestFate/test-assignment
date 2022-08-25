@@ -1,23 +1,27 @@
 <template>
   <div class="wrapper">
-    <div class="container p-5">
+    <div class="container">
       <PageHeader></PageHeader>
-      <GridLayout>
-        <template v-if="items">
-          <CatalogueItem
-              v-for="item in items"
-              :key="item.id"
-              :price="item.price"
-              :img-url="item.url"
-              :title="item.title"
-              :body="item.body"
-          >
-          </CatalogueItem>
-        </template>
-        <p v-else>
-          Товары не найдены
-        </p>
-      </GridLayout>
+      <div class="content">
+        <CreateForm></CreateForm>
+        <GridLayout>
+          <template v-if="items.length">
+            <CatalogueItem
+                v-for="item in items"
+                :key="item.id"
+                :price="item.price"
+                :url="item.url"
+                :title="item.title"
+                :body="item.body"
+                :id="item.id"
+            >
+            </CatalogueItem>
+          </template>
+          <p class="font-xxl" v-else>
+            Товары не найдены
+          </p>
+        </GridLayout>
+      </div>
     </div>
   </div>
 </template>
@@ -26,12 +30,13 @@
 import GridLayout from "@/components/GridLayout";
 import PageHeader from "@/components/PageHeader";
 import CatalogueItem from "@/components/CatalogueItem";
-import useStore from "vuex";
+import {useStore} from "vuex";
 import {computed} from "vue";
+import CreateForm from "@/components/CreateForm";
 
 export default {
   name: "MainPage",
-  components: { CatalogueItem, PageHeader, GridLayout },
+  components: {CreateForm, CatalogueItem, PageHeader, GridLayout },
   setup() {
     const store = useStore();
     const items = computed(() => store.state.items);
@@ -49,8 +54,25 @@ export default {
 }
 
 .container {
+  @extend .p-5;
   margin: 0 auto;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1440px;
+}
+
+.content {
+  display: flex;
+}
+
+@media screen and (max-width: $sm) {
+  .container {
+    padding: $base-padding;
+  }
+}
+
+@media screen and (max-width: $md) {
+  .content {
+    flex-direction: column;
+  }
 }
 </style>
