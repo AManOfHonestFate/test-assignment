@@ -24,6 +24,7 @@ export default {
 body {
   @extend .bg-primary;
   font-family: "Source Sans Pro", sans-serif;
+  font-width: $strong;
 }
 
 img {

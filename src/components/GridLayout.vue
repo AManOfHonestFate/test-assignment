@@ -1,18 +1,16 @@
 <template>
   <div class="grid-layout">
-
+    <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: "GridLayout"
-}
+  name: "GridLayout",
+};
 </script>
 
 <style lang="scss" scoped>
-$grid-column-width: 332px;
-
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(auto-fill, $grid-column-width);
