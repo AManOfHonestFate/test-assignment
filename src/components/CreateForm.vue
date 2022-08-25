@@ -1,32 +1,56 @@
 <template>
   <form
-      class="form p-4 mr-3 mb-3 bg-secondary card-shadow"
-      @submit.prevent="onSubmit"
+    class="form p-4 mr-3 mb-3 bg-secondary card-shadow"
+    @submit.prevent="onSubmit"
   >
     <label for="title">Наименование товара</label>
-    <MyInput v-model="title" required id="title" placeholder="Введите наименование товара"></MyInput>
+    <MyInput
+      type="text"
+      v-model="title"
+      required
+      id="title"
+      placeholder="Введите наименование товара"
+    ></MyInput>
     <label for="body">Описание товара</label>
-    <MyInput v-model="body" id="body" placeholder="Введите описание товара"></MyInput>
+    <TextArea
+      v-model="body"
+      id="body"
+      placeholder="Введите описание товара"
+    ></TextArea>
     <label for="url">Ссылка на изображение товара</label>
-    <MyInput v-model="url" required id="url" placeholder="Введите ссылку"></MyInput>
+    <MyInput
+      type="url"
+      v-model="url"
+      required
+      id="url"
+      placeholder="Введите ссылку"
+    ></MyInput>
     <label for="price">Цена товара</label>
-    <MyInput class="mb-4" v-model.number="price" required id="price" placeholder="Введите цену"></MyInput>
+    <MyInput
+      type="number"
+      class="mb-4"
+      v-model.number="price"
+      required
+      id="price"
+      placeholder="Введите цену"
+    ></MyInput>
     <button type="submit" class="submit">Добавить товар</button>
   </form>
 </template>
 
 <script>
 import MyInput from "@/components/MyInput";
-import {ref} from "vue";
-import {useStore} from "vuex";
+import { ref } from "vue";
+import { useStore } from "vuex";
+import TextArea from "@/components/TextArea";
 export default {
   name: "CreateForm",
-  components: {MyInput},
+  components: { MyInput, TextArea },
   setup() {
     // data
-    const title = ref('');
-    const url = ref('');
-    const body = ref('');
+    const title = ref("");
+    const url = ref("");
+    const body = ref("");
     const price = ref(0);
 
     // store
@@ -34,24 +58,29 @@ export default {
 
     // methods
     function onSubmit() {
-      console.log(title)
-      store.commit('addNewItem',
-          {title: title.value, url: url.value, body: body.value, price: price.value, id: Date.now()});
-      title.value = '';
-      url.value = '';
-      body.value = '';
+      console.log(title);
+      store.commit("addNewItem", {
+        title: title.value,
+        url: url.value,
+        body: body.value,
+        price: price.value,
+        id: Date.now(),
+      });
+      title.value = "";
+      url.value = "";
+      body.value = "";
       price.value = 0;
-    };
+    }
 
     return {
       title,
       url,
       body,
       price,
-      onSubmit
-    }
-  }
-}
+      onSubmit,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -72,8 +101,7 @@ export default {
     padding-top: 10px;
     padding-bottom: 11px;
     cursor: pointer;
-    transition: background-color $duration,
-                color $duration;
+    transition: background-color $duration, color $duration;
   }
 
   &:invalid {

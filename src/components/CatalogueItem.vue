@@ -2,7 +2,7 @@
   <div class="positioner">
     <div class="item bg-secondary card-shadow">
       <div class="wrapper mb-3">
-        <img :src="url" :alt="title"/>
+        <img :src="url" :alt="title" />
       </div>
       <div class="p-3">
         <h3 class="font-lg mb-3">{{ title }}</h3>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="delete-btn bg-pink" @click="deleteItem">
-      <img class="center" src="../assets/delete.svg" alt="delete"/>
+      <img class="center" src="../assets/delete.svg" alt="delete" />
     </div>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
     title: String,
     body: String,
     price: Number,
-    id: Number
+    id: Number,
   },
   computed: {
     formattedPrice() {
@@ -33,9 +33,9 @@ export default {
   },
   methods: {
     deleteItem() {
-      this.$store.commit('removeItem', this.id);
-    }
-  }
+      this.$store.commit("removeItem", this.id);
+    },
+  },
 };
 </script>
 

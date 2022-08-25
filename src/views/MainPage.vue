@@ -7,19 +7,17 @@
         <GridLayout>
           <template v-if="items.length">
             <CatalogueItem
-                v-for="item in items"
-                :key="item.id"
-                :price="item.price"
-                :url="item.url"
-                :title="item.title"
-                :body="item.body"
-                :id="item.id"
+              v-for="item in items"
+              :key="item.id"
+              :price="item.price"
+              :url="item.url"
+              :title="item.title"
+              :body="item.body"
+              :id="item.id"
             >
             </CatalogueItem>
           </template>
-          <p class="font-xxl" v-else>
-            Товары не найдены
-          </p>
+          <p class="font-xxl" v-else>Товары не найдены</p>
         </GridLayout>
       </div>
     </div>
@@ -30,20 +28,20 @@
 import GridLayout from "@/components/GridLayout";
 import PageHeader from "@/components/PageHeader";
 import CatalogueItem from "@/components/CatalogueItem";
-import {useStore} from "vuex";
-import {computed} from "vue";
+import { useStore } from "vuex";
+import { computed } from "vue";
 import CreateForm from "@/components/CreateForm";
 
 export default {
   name: "MainPage",
-  components: {CreateForm, CatalogueItem, PageHeader, GridLayout },
+  components: { CreateForm, CatalogueItem, PageHeader, GridLayout },
   setup() {
     const store = useStore();
     const items = computed(() => store.state.items);
 
     return {
-      items
-    }
+      items,
+    };
   },
 };
 </script>
