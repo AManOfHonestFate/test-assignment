@@ -1,0 +1,30 @@
+// theme colors
+//
+// background colors
+$background-colors: (
+  "primary": #E5E5E5,
+  "secondary": #FFFEFB,
+  "green": #7BAE73,
+  "pink": #FF8484,
+  "gray": #EEEEEE
+);
+
+// text colors
+$text-colors: (
+  "primary": #3F3F3F,
+  "secondary": #49485E,
+  "tertiary": #B4B4B4,
+  "white": white
+);
+
+// spacing
+$base-padding: 0.25rem;
+$base-margin: 0.25rem;
+
+// font sizes
+$base-font-size: 1rem;
+$font-size-xs: $base-font-size * 0.625;
+$font-size-sm: $base-font-size * 0.75;
+$font-size-lg: $base-font-size * 1.25;
+$font-size-xl: $base-font-size * 1.5;
+$font-size-xxl: $base-font-size * 1.75;

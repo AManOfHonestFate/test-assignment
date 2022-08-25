@@ -1,15 +1,32 @@
 <template>
-  <div></div>
+  <MainPage></MainPage>
 </template>
 
 <script>
-
+import MainPage from "@/views/MainPage";
 export default {
   name: "App",
-  components: {},
+  components: { MainPage },
 };
 </script>
 
 <style lang="scss">
+/* import google font */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
 
+/* reset styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @extend .bg-primary;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
 </style>
