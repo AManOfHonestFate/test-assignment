@@ -1,5 +1,7 @@
 # test-assignment
 
+### Node Version - v16.13.2
+
 ## Project setup
 ```
 npm install
