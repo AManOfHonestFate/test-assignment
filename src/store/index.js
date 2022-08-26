@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     items: [
+      // some hard coded data for illustration
       {
         id: 1,
         price: 10120,
@@ -33,16 +34,27 @@ export default createStore({
       },
     ],
     // sort modes: default min max name
-    sortModes: ['default', 'min', 'max', 'name'],
-    currentSort: 'default',
+    sortModes: [
+      "По умолчанию",
+      "По цене (min)",
+      "По цене (max)",
+      "По наименованию",
+    ],
+    currentSort: 0,
   },
   getters: {},
   mutations: {
+    setItems(state, items) {
+      this.state.items = JSON.parse(items);
+    },
     addNewItem(state, newItem) {
       state.items.push(newItem);
     },
     removeItem(state, id) {
       state.items = state.items.filter((item) => item.id !== id);
+    },
+    changeSort(state, sort) {
+      state.currentSort = sort;
     },
   },
   actions: {},

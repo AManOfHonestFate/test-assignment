@@ -85,6 +85,8 @@ export default {
 
 <style lang="scss" scoped>
 .form {
+  position: sticky;
+  top: $base-margin * 8;
   display: flex;
   flex-direction: column;
   width: $grid-column-width;

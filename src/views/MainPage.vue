@@ -6,16 +6,18 @@
         <CreateForm></CreateForm>
         <GridLayout>
           <template v-if="items.length">
-            <CatalogueItem
-              v-for="item in items"
-              :key="item.id"
-              :price="item.price"
-              :url="item.url"
-              :title="item.title"
-              :body="item.body"
-              :id="item.id"
-            >
-            </CatalogueItem>
+            <transition-group appear name="items">
+              <CatalogueItem
+                class="items-item"
+                v-for="item in sortedItems"
+                :key="item.id"
+                :price="item.price"
+                :url="item.url"
+                :title="item.title"
+                :body="item.body"
+                :id="item.id"
+              />
+            </transition-group>
           </template>
           <p class="font-xxl" v-else>Товары не найдены</p>
         </GridLayout>
@@ -37,10 +39,35 @@ export default {
   components: { CreateForm, CatalogueItem, PageHeader, GridLayout },
   setup() {
     const store = useStore();
+
+    // computed
     const items = computed(() => store.state.items);
+
+    const sortedItems = computed(() => {
+      switch (store.state.currentSort) {
+        case 1:
+          return [...items.value].sort(
+            ({ price: p1 }, { price: p2 }) => p1 - p2
+          );
+
+        case 2:
+          return [...items.value].sort(
+            ({ price: p1 }, { price: p2 }) => p2 - p1
+          );
+
+        case 3:
+          return [...items.value].sort(({ title: t1 }, { title: t2 }) =>
+            t1.localeCompare(t2)
+          );
+
+        default:
+          return items.value;
+      }
+    });
 
     return {
       items,
+      sortedItems,
     };
   },
 };
@@ -72,5 +99,15 @@ export default {
   .content {
     flex-direction: column;
   }
+}
+
+.items-item {
+  transition: all 0.4s ease-in-out;
+}
+
+.items-enter-from,
+.items-leave-to {
+  opacity: 0;
+  transform: scale(0.4) !important;
 }
 </style>

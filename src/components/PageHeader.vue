@@ -1,13 +1,15 @@
 <template>
   <header class="flex-header mr-3 mb-3">
     <h2 class="h2 font-xxl">Добавление товара</h2>
-    <select></select>
+    <SortSelect></SortSelect>
   </header>
 </template>
 
 <script>
+import SortSelect from "@/components/SortSelect";
 export default {
   name: "PageHeader",
+  components: { SortSelect },
 };
 </script>
 
