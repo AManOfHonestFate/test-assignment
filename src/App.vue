@@ -8,14 +8,12 @@ export default {
   name: "App",
   components: { MainPage },
   created() {
-    window.onbeforeunload = () => {
-      localStorage.items = JSON.stringify(this.$store.state.items);
-    };
-  },
-  mounted() {
     if (localStorage.items) {
       this.$store.commit("setItems", localStorage.items);
     }
+    window.onbeforeunload = () => {
+      localStorage.items = JSON.stringify(this.$store.state.items);
+    };
   },
 };
 </script>
